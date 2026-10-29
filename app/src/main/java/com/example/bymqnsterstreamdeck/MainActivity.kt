@@ -79,7 +79,6 @@ private fun DeckScreen(
     var host by remember { mutableStateOf(prefs.getString("host", "") ?: "") }
     var port by remember { mutableStateOf(prefs.getString("port", "4455") ?: "4455") }
     var password by remember { mutableStateOf(prefs.getString("password", "") ?: "") }
-    var useUsb by remember { mutableStateOf(prefs.getBoolean("useUsb", false)) }
 
     var status by remember { mutableStateOf("OBS bağlantısı kurulmadı") }
     var profile by remember { mutableIntStateOf(0) }
@@ -157,20 +156,6 @@ private fun DeckScreen(
             }
             Button(onClick = { showDeleteDialog = true }) {
                 Text("Tuş sil")
-            }
-            Button(
-                onClick = {
-                    useUsb = true
-                    prefs.edit().putBoolean("useUsb", true).apply()
-                    client?.close()
-                    status = "USB bağlantısı kuruluyor…"
-                    client = ObsClient(
-                        url = "ws://127.0.0.1:$port",
-                        password = password
-                    ) { status = it }
-                }
-            ) {
-                Text("USB bağlan")
             }
             Text(
                 text = status,
@@ -284,17 +269,7 @@ private fun DeckScreen(
                         label = { Text("WebSocket parolası") },
                         singleLine = true
                     )
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text("USB ile bağlan")
-                        Spacer(Modifier.weight(1f))
-                        Switch(checked = useUsb, onCheckedChange = { useUsb = it })
-                    }
-                    Text(
-                        if (useUsb) "USB için bilgisayarda adb reverse tcp:4455 tcp:4455 komutu gerekir."
-                        else "Wi-Fi için telefon ve bilgisayar aynı ağa bağlı olmalı.",
-                        style = MaterialTheme.typography.bodySmall
-                    )
-
+                    Text("Telefon ve bilgisayar aynı Wi-Fi ağına bağlı olmalı.", style = MaterialTheme.typography.bodySmall)
                 }
             },
             confirmButton = {
@@ -304,13 +279,12 @@ private fun DeckScreen(
                             .putString("host", host)
                             .putString("port", port)
                             .putString("password", password)
-                            .putBoolean("useUsb", useUsb)
                             .apply()
 
                         client?.close()
                         status = "OBS'ye bağlanılıyor…"
                         client = ObsClient(
-                            url = "ws://${if (useUsb) "127.0.0.1" else host}:$port",
+                            url = "ws://${host}:$port",
                             password = password
                         ) { status = it }
 

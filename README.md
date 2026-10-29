@@ -19,7 +19,17 @@ Android telefonunu yatay dokunmatik kumanda olarak kullanıp OBS Studio’ya Wi�
 
 ## OBS ve Wi‑Fi bağlantısı
 
-OBS WebSocket, OBS Studio 28 ve sonrasında yerleşik gelir. OBS’de **Tools → obs-websocket Settings** bölümünden sunucuyu etkinleştir. Port olarak `4455` kullan; parola doğrulamasını açık tut ve bir WebSocket parolası belirle. [OBS uzaktan kontrol rehberi](https://obsproject.com/kb/remote-control-guide)
+OBS WebSocket, OBS Studio 28 ve sonrasında yerleşik gelir. OBS’de **Araçlar → WebSocket Sunucusu Ayarları** menüsünü aç. (OBS arayüzün İngilizceyse menü adı **Tools → WebSocket Server Settings** olur.) [OBS uzaktan kontrol rehberi](https://obsproject.com/kb/remote-control-guide)
+
+![OBS'de Araçlar menüsünden WebSocket Sunucusu Ayarları seçiliyor](docs/images/obs-tools-websocket.png)
+
+Ayar penceresinde **WebSocket sunucusunu etkinleştir** seçeneğini işaretle. Portu `4455` bırakabilir veya uygulamada gireceğin portu kullan. **Kimlik Doğrulamasını Etkinleştir** seçili kalsın ve bir parola belirle. Sonra **Uygula** ve **Tamam**’a bas.
+
+![OBS WebSocket sunucusunu etkinleştirme, port ve parola ayarları](docs/images/obs-websocket-settings.png)
+
+OBS ayar penceresindeki **Bağlanma Bilgilerini Göster** düğmesine bas. Açılan ekranda bilgisayarın yerel IP adresi, port ve WebSocket parolası gösterilir. IP ve parolayı yalnızca kendi telefonundaki uygulamaya gir; bu bilgileri internette veya başkalarıyla paylaşma. QR kodu bu uygulamada kullanılmıyor.
+
+![OBS bağlantı bilgileri penceresi; IP, port ve parola alanları](docs/images/obs-connection-info.png)
 
 ![Telefon, Wi‑Fi ve OBS bağlantı şeması](docs/images/wifi-connection.svg)
 

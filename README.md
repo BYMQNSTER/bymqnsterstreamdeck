@@ -11,11 +11,18 @@ Android telefonunu yatay dokunmatik kumanda olarak kullanıp OBS Studio’ya Wi�
 
 ## Kurulum
 
-1. Yukarıdaki APK bağlantısını telefonda açıp dosyayı indir.
-2. İndirilen APK’ya dokun. Android, tarayıcıdan yükleme izni isterse yalnızca bu yükleme için izin ver ve **Yükle**’ye bas.
-3. Uygulamayı aç. APK GitHub’dan gelmelidir; mesajlaşma gruplarından gelen APK’ları yükleme.
+1. Yukarıdaki APK bağlantısını telefonda açıp GitHub’dan indir.
+2. APK’ya dokun. Google Play Protect uygulamayı ilk kez gördüğünde tarama önerebilir. **Uygulamayı tara** seçeneğine basıp taramanın bitmesini bekle.
+3. Bu telefonda yaptığımız testte Play Protect taramayı tamamladı ve uygulama güvenli görünüyor sonucunu verdi. Bu sonuç aşağıda ekran görüntüleriyle gösterilmiştir. Play Protect farklı bir uyarı verirse uyarıyı geçme; yüklemeyi durdurup APK’nın GitHub’daki bu depodan indirildiğini doğrula.
+4. Güvenli sonucu çıktıktan sonra **Yükle**’ye bas. Kurulum bitince **Aç**’ı seç. Android tarayıcıdan yükleme izni isterse yalnızca bu yükleme için izin ver.
 
-![APK indirme ve yükleme adımları](docs/images/install-flow.svg)
+![Play Protect'in uygulamayı tarama önerisi](docs/images/play-protect-scan-prompt.jpg)
+
+![Play Protect tarama yaparken](docs/images/play-protect-scanning.jpg)
+
+![Testte Play Protect'in uygulamayı güvenli gördüğü sonuç](docs/images/play-protect-safe-result.jpg)
+
+![Android kurulum tamamlandı; uygulamayı açma seçeneği](docs/images/android-install-complete.jpg)
 
 ## OBS ve Wi‑Fi bağlantısı
 
@@ -35,7 +42,12 @@ OBS ayar penceresindeki **Bağlanma Bilgilerini Göster** düğmesine bas. Açı
 
 1. Telefon ve bilgisayar aynı Wi‑Fi ağına bağlı olsun.
 2. Windows’ta Komut İstemi’ni açıp `ipconfig` çalıştır. Wi‑Fi adaptörünün **IPv4 Address** değerini bul (örneğin `192.168.1.25`). `127.0.0.1` yazma; bu telefonun kendisini gösterir.
-3. Uygulamada **OBS ayarları**’na dokun. Bilgisayarın IPv4 adresini, OBS portunu (`4455`) ve OBS’de belirlediğin WebSocket parolasını gir.
+3. Uygulamada **OBS ayarları** düğmesine dokun. Bilgisayarın IPv4 adresini, OBS portunu (`4455`) ve OBS’de belirlediğin WebSocket parolasını gir.
+
+![Uygulama ana ekranında OBS ayarları düğmesi](docs/images/app-home-screen.jpg)
+
+![Telefonda OBS WebSocket IP, port ve parola alanları](docs/images/app-obs-settings.jpg)
+
 4. **Bağlan**’a bas. Durum alanında OBS bağlantısının açıldığını görmelisin.
 5. Bağlanmazsa OBS’de WebSocket sunucusunun açık olduğunu, IP/port/parolanın doğru olduğunu ve Windows Güvenlik Duvarı’nın OBS’ye özel ağda izin verdiğini kontrol et.
 
@@ -57,3 +69,6 @@ Bu sürüm yayın başlatma/durdurma, kamera kaynağını kapatma veya telefonu 
 ## Geliştirme
 
 Android Studio’da projeyi açıp `app` modülünü çalıştır. APK üretmek için **Build → Generate APKs** seçeneğini kullan. Kaynak kod Kotlin, Jetpack Compose ve OBS WebSocket 5 kullanır.
+
+
+

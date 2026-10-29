@@ -193,7 +193,7 @@ private fun DeckScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(78.dp)
+                        .height(buttonSize.dp)
                         .combinedClickable(
                             onClick = {
                                 val currentClient = client
